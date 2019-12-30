@@ -198,7 +198,7 @@ const converters = {
     },
     lock: {
         cluster: 'closuresDoorLock',
-        type: ['attributeReport', 'readResponse'],
+        type: ['attributeReport', 'readResponse', 'readRsp'],
         convert: (model, msg, publish, options) => {
             if (msg.data.hasOwnProperty('lockState')) {
                 return {state: msg.data.lockState == 2 ? 'UNLOCK' : 'LOCK'};
@@ -207,7 +207,7 @@ const converters = {
     },
     battery_percentage_remaining: {
         cluster: 'genPowerCfg',
-        type: ['attributeReport', 'readResponse'],
+        type: ['attributeReport', 'readResponse', 'readRsp'],
         convert: (model, msg, publish, options) => {
             if (msg.data.hasOwnProperty('batteryPercentageRemaining')) {
                 return {battery: precisionRound(msg.data['batteryPercentageRemaining'] / 2, 2)};
